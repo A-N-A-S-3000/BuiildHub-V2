@@ -1,0 +1,31 @@
+﻿@page "{projectPublicId}"
+@model ByProjectModel
+@{
+    ViewData["Title"] = "Contracts";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>Contracts for Project @Model.ProjectPublicId</h2>
+@await Html.PartialAsync("_Flash")
+
+@if (!Model.Contracts.Any())
+{
+    <p>No contracts.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead><tr><th>Id</th><th>CompanyId</th><th>BidId</th><th>Terms</th><th>Created</th></tr></thead>
+        <tbody>
+            @foreach (var c in Model.Contracts)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.CompanyId</td>
+                    <td>@c.BrokerBidId</td>
+                    <td>@c.Terms</td>
+                    <td>@c.CreatedAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

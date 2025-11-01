@@ -1,0 +1,27 @@
+﻿@page
+@model BuildHub.Pages.ConsultantModel
+@{
+    ViewData["Title"] = "Consultant";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="alert alert-success shadow-sm">
+@if (!string.IsNullOrEmpty(Model.TEmail))
+{
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h4 class="alert-heading mb-1"></h4>
+                        <p class="mb-1">Email: <strong>@Model.TEmail</strong></p>
+                        <p class="mb-0">User type: @Model.TUserType</p>
+                        <p class="mb-0">Location: @Model.TProjectLocation</p>
+                        <p class="mb-0">Floors: @Model.TProjectFloors</p>
+                        <p class="mb-0">Number: @Model.TKrokiNumber</p>
+                    </div>
+                </div>
+}
+        </div>
+    </div>
+</div>
+

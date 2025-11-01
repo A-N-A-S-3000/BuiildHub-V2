@@ -1,0 +1,58 @@
+﻿@page
+@model WelcomeModel
+@{
+    ViewData["Title"] = "Welcome";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="alert alert-success shadow-sm">
+            @if (!string.IsNullOrEmpty(Model.TEmail))
+            {
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h4 class="alert-heading mb-1"></h4>
+                        <p class="mb-1">Email: <strong>@Model.TEmail</strong></p>
+                        <p class="mb-0">User type: @Model.TUserType</p>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        @if (@Model.TUserType == "company")
+        {
+            <p>you are a company</p>
+        }
+        else
+        {
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-3">Create your account</h3>
+
+                    <form method="post" class="needs-validation" asp-page-handler="SaveProject">
+                        <div class="mb-3">
+                            <label asp-for="Input_welcome.Location" class="form-label">Location</label>
+                            <input asp-for="Input_welcome.Location" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Input_welcome.Location"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input_welcome.floors" class="form-label">Number of floors</label>
+                            <input asp-for="Input_welcome.floors" type="number" min="1" class="form-control" placeholder="e.g., 2" />
+                            <span class="text-danger" asp-validation-for="Input_welcome.floors"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Kroki land number</label>
+                            <input asp-for="Input_welcome.krokiNumber" class="form-control" placeholder="e.g., 14-123-456" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Save Project</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@page
+@model BuildHub.Pages.Projects.ProjectsIndexModel
+
+@{
+    ViewData["Title"] = "Projects";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Projects</h2>
+@await Html.PartialAsync("_Flash")
+
+<p>
+    <a class="btn btn-primary" asp-page="/Projects/Create">+ New Project</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr><th>Id</th><th>Status</th><th>Location</th><th>Floors</th><th>Kroki</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Projects)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.status</td>
+                <td>@p.Location</td>
+                <td>@p.Floors</td>
+                <td>@p.KrokiNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

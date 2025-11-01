@@ -1,0 +1,24 @@
+﻿@page
+@model OpenModel
+@{
+    ViewData["Title"] = "Open Request";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>Open Broker Request</h2>
+@await Html.PartialAsync("_Flash")
+
+<form method="post" class="card p-3">
+    <div class="mb-2">
+        <label class="form-label">ProjectPublicId (int for now)</label>
+        <input asp-for="ProjectPublicId" type="number" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Tier Filter (excellent|good|standard)</label>
+        <input asp-for="TierFilter" class="form-control" />
+    </div>
+    <div class="form-check mb-3">
+        <input asp-for="HasPlans" class="form-check-input" />
+        <label class="form-check-label">Has Plans</label>
+    </div>
+    <button class="btn btn-primary">Open</button>
+</form>

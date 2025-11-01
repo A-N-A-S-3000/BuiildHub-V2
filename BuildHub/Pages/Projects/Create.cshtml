@@ -1,0 +1,41 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "New Project";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>New Project</h2>
+
+<form method="post" class="card p-3">
+    <div class="mb-2">
+        <label class="form-label">Status</label>
+        <select asp-for="Status" class="form-select">
+            <option>new</option>
+            <option>in progress</option>
+            <option>completed</option>
+        </select>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Location</label>
+        <input asp-for="Location" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Floors</label>
+        <input asp-for="Floors" type="number" min="1" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Kroki Number</label>
+        <input asp-for="KrokiNumber" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">UserId</label>
+        <input asp-for="UserId" type="number" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image Path (optional)</label>
+        <input asp-for="ImagePath" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a asp-page="/Projects/Index" class="btn btn-secondary">Cancel</a>
+</form>

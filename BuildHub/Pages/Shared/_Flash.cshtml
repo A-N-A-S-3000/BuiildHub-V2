@@ -1,0 +1,7 @@
+﻿@{
+    var msg = TempData["msg"] as string;
+}
+@if (!string.IsNullOrEmpty(msg))
+{
+    <div class="alert alert-success">@msg</div>
+}

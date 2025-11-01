@@ -1,0 +1,43 @@
+﻿@page
+@model BuildHub.Pages.SignUpModel
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="mb-3">Create your account</h3>
+
+                <form method="post" class="needs-validation">
+                    <div class="mb-3">
+                        <label asp-for="Input.Email" class="form-label">Email</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Input.Email"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Password" class="form-label">Password</label>
+                        <input asp-for="Input.Password" class="form-control" type="password" />
+                        <span class="text-danger" asp-validation-for="Input.Password"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.UserType" class="form-label">User Type</label>
+                        <select asp-for="Input.UserType" class="form-select">
+                            <option value="">choose</option>
+                            <option value="company">Company</option>
+                            <option value="homeowner">Homeowner</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="Input.UserType"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

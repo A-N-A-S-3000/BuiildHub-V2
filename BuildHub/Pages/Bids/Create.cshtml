@@ -1,0 +1,40 @@
+﻿@page
+@model CreateBidModel
+@{
+    ViewData["Title"] = "Place Bid";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>Place Bid</h2>
+
+<form method="post" class="card p-3">
+    <div class="mb-2">
+        <label class="form-label">ProjectPublicId (int)</label>
+        <input asp-for="ProjectPublicId" type="number" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">RequestId</label>
+        <input asp-for="RequestId" type="number" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">CompanyId</label>
+        <input asp-for="CompanyId" type="number" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Price Total (OMR)</label>
+        <input asp-for="PriceTotal" type="number" step="0.01" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Duration (days)</label>
+        <input asp-for="DurationDays" type="number" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Tier Snapshot</label>
+        <input asp-for="TierSnapshot" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Message</label>
+        <input asp-for="Message" class="form-control" />
+    </div>
+    <button class="btn btn-primary">Submit</button>
+    <a asp-page="/Requests/Details" asp-route-projectPublicId="@Model.ProjectPublicId" class="btn btn-secondary">Cancel</a>
+</form>

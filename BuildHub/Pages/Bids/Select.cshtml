@@ -1,0 +1,16 @@
+﻿@page
+@model SelectModel
+@{
+    ViewData["Title"] = "Select Bid";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>Select Bid</h2>
+
+<form method="post" class="card p-3">
+    <div class="mb-3">
+        <label class="form-label">Terms</label>
+        <textarea asp-for="Terms" class="form-control" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary">Confirm & Create Contract</button>
+    <a class="btn btn-secondary" asp-page="/Requests/Details" asp-route-projectPublicId="@Model.ProjectPublicId">Cancel</a>
+</form>

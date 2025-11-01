@@ -1,0 +1,47 @@
+﻿@page "{companyId:int}"
+@model BuildHub.Pages.Companies.ProjectsModel
+@{
+    ViewData["Title"] = "Company Past Projects";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>Past Projects — @Model.Company?.Name (ID @Model.Company?.Id)</h2>
+@await Html.PartialAsync("_Flash")
+
+@if (Model.Company is null)
+{
+    <div class="alert alert-warning">Company not found.</div>
+}
+else if (!Model.Projects.Any())
+{
+    <p>No past projects yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Floors</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Projects)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Title</td>
+                    <td>@p.Location</td>
+                    <td>@p.Floors</td>
+                    <td>@p.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a class="btn btn-secondary" asp-page="/Companies/Index">Back to Companies</a>
+</p>

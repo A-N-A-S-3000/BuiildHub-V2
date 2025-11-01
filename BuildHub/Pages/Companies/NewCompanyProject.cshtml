@@ -1,0 +1,17 @@
+﻿@page
+@model NewCompanyProjectModel
+@{
+    ViewData["Title"] = "New Company Project";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>New Company Project</h2>
+<form method="post" class="card p-3">
+    <div class="mb-2"><label class="form-label">CompanyId</label><input asp-for="CompanyId" type="number" class="form-control" /></div>
+    <div class="mb-2"><label class="form-label">Title</label><input asp-for="Title" class="form-control" /></div>
+    <div class="mb-2"><label class="form-label">Location</label><input asp-for="Location" class="form-control" /></div>
+    <div class="mb-2"><label class="form-label">Floors</label><input asp-for="Floors" type="number" class="form-control" /></div>
+    <div class="mb-2"><label class="form-label">Description</label><input asp-for="Description" class="form-control" /></div>
+    <div class="mb-3"><label class="form-label">Image Path</label><input asp-for="ImagePath" class="form-control" /></div>
+    <button class="btn btn-primary">Save</button>
+    <a asp-page="/Companies/Index" class="btn btn-secondary">Cancel</a>
+</form>

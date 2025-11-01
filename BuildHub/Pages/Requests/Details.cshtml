@@ -1,0 +1,45 @@
+﻿@page "{projectPublicId}"
+@model DetailsModel
+@{
+    ViewData["Title"] = "Request Details";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<h2>Requests for Project @Model.ProjectPublicId</h2>
+@await Html.PartialAsync("_Flash")
+
+<p><a class="btn btn-primary" asp-page="/Bids/Create" asp-route-projectPublicId="@Model.ProjectPublicId">Place Bid</a></p>
+
+@if (!Model.Requests.Any())
+{
+    <p>No requests yet.</p>
+}
+else
+{
+    <h4>Open Requests</h4>
+    <ul class="list-group mb-3">
+        @foreach (var r in Model.Requests)
+        {
+            <li class="list-group-item">Req @r.Id • Status: <b>@r.Status</b> • Tier: @r.TierFilter</li>
+        }
+    </ul>
+
+    <h4>Bids</h4>
+    <ul class="list-group">
+        @foreach (var b in Model.Bids)
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <div>
+                    Bid @b.Id • Company @b.CompanyId • Total: <b>@b.PriceTotal</b> OMR • Duration: @b.DurationDays d
+                    @if (b.Selected)
+                    {
+                        <span class="badge bg-success ms-2">Selected</span>
+                    }
+                </div>
+                <a class="btn btn-sm btn-outline-primary"
+                   asp-page="/Bids/Select"
+                   asp-route-bidId="@b.Id"
+                   asp-route-projectPublicId="@Model.ProjectPublicId">Select</a>
+            </li>
+        }
+    </ul>
+}
