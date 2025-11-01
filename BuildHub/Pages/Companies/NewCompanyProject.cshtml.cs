@@ -18,11 +18,19 @@ public class NewCompanyProjectModel : PageModel
 
     public IActionResult OnPost()
     {
-        if (CompanyId <= 0 || string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(Location) || Floors < 0)
+        if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(Location) || Floors < 0)
         { ModelState.AddModelError("", "Fill fields"); return Page(); }
 
         _db.AddCompanyProject(CompanyId, Title, Location, Floors, Description, ImagePath);
-        TempData["msg"] = "Company project added.";
+        if (CompanyId <= 0)
+        {
+            TempData["msg"] = "Nigga, put a correct ID and do it again.";
+            return Page();
+        }
+        else
+        {
+            TempData["msg"] = "Company project added.";
         return RedirectToPage("/Companies/Index");
+        }
     }
 }
